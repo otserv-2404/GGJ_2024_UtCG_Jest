@@ -1,6 +1,10 @@
 extends Node2D
 
+signal start_sequence
+
 @onready var global = get_node("/root/Global")
+
+@export var objectId: int
 
 var initialScale
 var mouseOver = false
@@ -12,7 +16,8 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("click"):
 		if mouseOver:
-			print("action!")
+			start_sequence.emit()
+			
 
 
 func _on_area_2d_mouse_entered():

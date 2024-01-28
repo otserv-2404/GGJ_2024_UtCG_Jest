@@ -1,6 +1,8 @@
 extends StaticBody2D
 
 @onready var global = get_node("/root/Global")
+
+@export var dropPointId: int
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	modulate = Color(Color.MEDIUM_PURPLE, 0.7)

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b73ewedkx2tc0"]
+
+[ext_resource type="PackedScene" uid="uid://d4lkv35ituqh6" path="res://Assets/scenes/Objetos/movable_object.tscn" id="1_3avmg"]
+[ext_resource type="Texture2D" uid="uid://cthbyqe45hiss" path="res://Assets/gfx/taca.png" id="2_pm0wy"]
+
+[node name="Copo" instance=ExtResource("1_3avmg")]
+objectId = 2
+
+[node name="Sprite2D" parent="." index="0"]
+modulate = Color(1, 0.305882, 1, 1)
+texture = ExtResource("2_pm0wy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]

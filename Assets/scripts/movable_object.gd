@@ -1,10 +1,9 @@
-extends Node2D
-
-@export var spriteTexture: CompressedTexture2D
+class_name MovableObject extends Node2D
 
 @onready var global = get_node("/root/Global")
-
 @onready var collisionBox = $Area2D/CollisionShape2D
+
+@export var objectId: int
 
 var draggable = false
 var is_inside_droppable = false
@@ -12,6 +11,8 @@ var body_ref
 var initialPos: Vector2
 var initialScale
 var offset: Vector2
+var is_activated = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	initialScale = scale
@@ -36,6 +37,9 @@ func _process(delta):
 			var tween = get_tree().create_tween()
 			if is_inside_droppable:
 				tween.tween_property(self,"position",body_ref.position,0.2).set_ease(Tween.EASE_OUT)
+				
+				# Assinala como completo o objetivo
+				global.objectives[objectId-1] = true
 			else:
 				tween.tween_property(self,"position",initialPos,0.2).set_ease(Tween.EASE_OUT)
 			
@@ -44,9 +48,10 @@ func _process(delta):
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("droppable"):
-		is_inside_droppable = true
-		body.modulate = Color(Color.REBECCA_PURPLE, 1)
-		body_ref = body
+		if body.dropPointId == objectId:
+			is_inside_droppable = true
+			body.modulate = Color(Color.REBECCA_PURPLE, 1)
+			body_ref = body
 
 
 func _on_area_2d_body_exited(body):

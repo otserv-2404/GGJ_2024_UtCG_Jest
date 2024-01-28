@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dltqexqycurqp"]
+[gd_scene load_steps=4 format=3 uid="uid://cu2cjoku6lvfi"]
 
 [ext_resource type="PackedScene" uid="uid://d4lkv35ituqh6" path="res://Assets/scenes/Objetos/movable_object.tscn" id="1_nf44e"]
 [ext_resource type="Texture2D" uid="uid://42hmxn4o7v4h" path="res://Assets/gfx/mesa.png" id="2_yctge"]

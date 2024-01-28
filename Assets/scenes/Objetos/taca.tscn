@@ -1,10 +1,77 @@
-[gd_scene load_steps=4 format=3 uid="uid://e2kgwtnkjdnd"]
+[gd_scene load_steps=8 format=3 uid="uid://e2kgwtnkjdnd"]
 
 [ext_resource type="PackedScene" uid="uid://d4lkv35ituqh6" path="res://Assets/scenes/Objetos/movable_object.tscn" id="1_765wy"]
 [ext_resource type="Texture2D" uid="uid://cthbyqe45hiss" path="res://Assets/gfx/taca.png" id="2_fp6km"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_78eu8"]
 size = Vector2(98, 139)
+
+[sub_resource type="Animation" id="Animation_3h4hx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_as1w4"]
+resource_name = "activate"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oy4kg"]
+_data = {
+"RESET": SubResource("Animation_3h4hx"),
+"activate": SubResource("Animation_as1w4")
+}
+
+[sub_resource type="Curve2D" id="Curve2D_1r552"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 112, -182, 0, 0, 0, 0, 230, 0, 0, 0, 0, 0, 248, 166, 0, 0, 0, 0, -2, 0)
+}
+point_count = 5
 
 [node name="Taca" instance=ExtResource("1_765wy")]
 
@@ -14,3 +81,11 @@ texture = ExtResource("2_fp6km")
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_78eu8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_oy4kg")
+}
+
+[node name="Path2D" type="Path2D" parent="." index="3"]
+curve = SubResource("Curve2D_1r552")
