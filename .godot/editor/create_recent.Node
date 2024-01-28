@@ -1,0 +1,14 @@
+AnimationPlayer
+CollisionShape2D
+Area2D
+Sprite2D
+TextureRect
+PanelContainer
+VBoxContainer
+TextureProgressBar
+Label
+HBoxContainer
+MarginContainer
+Control
+CanvasLayer
+AudioStreamPlayer

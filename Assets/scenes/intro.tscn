@@ -1,0 +1,102 @@
+[gd_scene load_steps=9 format=3 uid="uid://bygthg6xy4u4a"]
+
+[ext_resource type="Script" path="res://Assets/scripts/intro.gd" id="1_ksun1"]
+[ext_resource type="Texture2D" uid="uid://cun28bsc8snq" path="res://Assets/gfx/intro/intro_finished.png" id="2_2un4k"]
+[ext_resource type="VideoStream" path="res://Assets/gfx/intro/Under_the_clock_2_1152_648.ogv" id="2_50dxt"]
+[ext_resource type="Texture2D" uid="uid://6sdtoy6rf5sm" path="res://Assets/gfx/intro/intro_started.png" id="3_3c3m6"]
+
+[sub_resource type="Animation" id="Animation_vcwec"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_t8y5y"]
+resource_name = "fade_in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wp4jo"]
+resource_name = "fade_out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_htppa"]
+_data = {
+"RESET": SubResource("Animation_vcwec"),
+"fade_in": SubResource("Animation_t8y5y"),
+"fade_out": SubResource("Animation_wp4jo")
+}
+
+[node name="Intro" type="Node"]
+script = ExtResource("1_ksun1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="IntroFinished" type="TextureRect" parent="."]
+visible = false
+offset_left = -571.0
+offset_top = -322.0
+offset_right = 581.0
+offset_bottom = 326.0
+texture = ExtResource("2_2un4k")
+
+[node name="IntroStarted" type="TextureRect" parent="."]
+offset_left = -571.0
+offset_top = -322.0
+offset_right = 581.0
+offset_bottom = 326.0
+texture = ExtResource("3_3c3m6")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_left = -571.0
+offset_top = -322.0
+offset_right = 1349.0
+offset_bottom = 766.0
+stream = ExtResource("2_50dxt")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -608.0
+offset_top = -345.0
+offset_right = 611.0
+offset_bottom = 343.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_htppa")
+}
+
+[connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://csnpd81pmbn3s"]
+
+[ext_resource type="PackedScene" uid="uid://bi7abb2nxr4eq" path="res://Assets/scenes/Objetos/interactive_object.tscn" id="1_0vogc"]
+[ext_resource type="Texture2D" uid="uid://cq5vhn6gxcl3c" path="res://Assets/gfx/trono.png" id="2_5e7ho"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_opfvk"]
+size = Vector2(667, 1186)
+
+[node name="Trono" instance=ExtResource("1_0vogc")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_5e7ho")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0.5, 7)
+shape = SubResource("RectangleShape2D_opfvk")

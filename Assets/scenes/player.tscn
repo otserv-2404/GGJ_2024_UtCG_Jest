@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://di76w4vfxug7l"]
+
+[ext_resource type="Texture2D" uid="uid://c40u5cpj6e2q3" path="res://Assets/gfx/tmp_player.png" id="1_xt565"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_107ns"]
+size = Vector2(227, 375)
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+texture = ExtResource("1_xt565")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.5, 5.5)
+shape = SubResource("RectangleShape2D_107ns")

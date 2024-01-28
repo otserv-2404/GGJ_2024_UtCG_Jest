@@ -1,0 +1,47 @@
+[gd_scene load_steps=10 format=3 uid="uid://dtilvxeianalu"]
+
+[ext_resource type="Script" path="res://Assets/scripts/main.gd" id="1_1yasl"]
+[ext_resource type="PackedScene" uid="uid://mqboq115fhvy" path="res://Assets/scenes/background_2.tscn" id="2_j07hb"]
+[ext_resource type="PackedScene" uid="uid://di76w4vfxug7l" path="res://Assets/scenes/player.tscn" id="3_wed42"]
+[ext_resource type="Script" path="res://Assets/scripts/Camera.gd" id="4_smr3l"]
+[ext_resource type="PackedScene" uid="uid://blvjhjy6dofdq" path="res://Assets/scenes/drop_point.tscn" id="6_bymy0"]
+[ext_resource type="PackedScene" uid="uid://dltqexqycurqp" path="res://Assets/scenes/Objetos/mesa.tscn" id="6_h6y2l"]
+[ext_resource type="PackedScene" uid="uid://e2kgwtnkjdnd" path="res://Assets/scenes/Objetos/taca.tscn" id="7_vv1md"]
+[ext_resource type="PackedScene" uid="uid://rpm2p7khckx4" path="res://Assets/scenes/ui.tscn" id="8_mvv02"]
+[ext_resource type="PackedScene" uid="uid://csnpd81pmbn3s" path="res://Assets/scenes/Objetos/trono.tscn" id="8_sm13a"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_1yasl")
+
+[node name="Background" parent="." instance=ExtResource("2_j07hb")]
+scale = Vector2(0.5, 0.5)
+
+[node name="Player" parent="." instance=ExtResource("3_wed42")]
+
+[node name="Camera" type="Camera2D" parent="Player"]
+script = ExtResource("4_smr3l")
+
+[node name="MousePosLabel" type="Label" parent="Player/Camera"]
+offset_left = -582.0
+offset_top = -309.0
+offset_right = -542.0
+offset_bottom = -286.0
+
+[node name="DropPoint" parent="." instance=ExtResource("6_bymy0")]
+position = Vector2(227, 32)
+
+[node name="Mesa" parent="." instance=ExtResource("6_h6y2l")]
+position = Vector2(227, 146)
+scale = Vector2(0.25, 0.25)
+
+[node name="Taca" parent="." instance=ExtResource("7_vv1md")]
+position = Vector2(-201, 258)
+scale = Vector2(0.5, 0.5)
+
+[node name="Trono" parent="." instance=ExtResource("8_sm13a")]
+position = Vector2(-4, 0)
+scale = Vector2(0.25, 0.25)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="UI" parent="." instance=ExtResource("8_mvv02")]

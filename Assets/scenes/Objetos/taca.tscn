@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://e2kgwtnkjdnd"]
+
+[ext_resource type="PackedScene" uid="uid://d4lkv35ituqh6" path="res://Assets/scenes/Objetos/movable_object.tscn" id="1_765wy"]
+[ext_resource type="Texture2D" uid="uid://cthbyqe45hiss" path="res://Assets/gfx/taca.png" id="2_fp6km"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_78eu8"]
+size = Vector2(98, 139)
+
+[node name="Taca" instance=ExtResource("1_765wy")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_fp6km")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_78eu8")
